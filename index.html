@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MyBrainCo — Email Block Libraries</title>
+  <style>
+    :root {
+      --ink: #151515;
+      --ink-soft: #4e4e4e;
+      --muted: #8a8a8a;
+      --line: #e2e2e2;
+      --bg: #ededed;
+      --card: #ffffff;
+      --font: Arial, Helvetica, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .shell { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+    .masthead {
+      background: var(--ink);
+      color: #fff;
+      padding: 64px 0 58px;
+    }
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #b9b9b9;
+      margin: 0 0 16px;
+    }
+    .masthead h1 {
+      font-size: 44px;
+      line-height: 1.04;
+      letter-spacing: -2px;
+      font-weight: 700;
+      margin: 0;
+    }
+    .masthead p {
+      margin: 18px 0 0;
+      max-width: 540px;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #c9c9c9;
+    }
+
+    .section { padding: 56px 0 72px; }
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 0 0 28px;
+      flex-wrap: wrap;
+    }
+    .section-head h2 {
+      font-size: 13px;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--muted);
+      margin: 0;
+    }
+    .section-head .count {
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 34px rgba(0,0,0,.10);
+      border-color: #cfcfcf;
+    }
+    .card-top {
+      padding: 26px 26px 22px;
+      border-bottom: 1px solid var(--line);
+    }
+    .card-index {
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--muted);
+      margin: 0 0 14px;
+    }
+    .card h3 {
+      font-size: 23px;
+      line-height: 1.12;
+      letter-spacing: -.9px;
+      font-weight: 700;
+      margin: 0;
+    }
+    .card p {
+      margin: 12px 0 0;
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--ink-soft);
+    }
+    .card-body { padding: 22px 26px 26px; display: flex; flex-direction: column; flex: 1; }
+    .module-list {
+      list-style: none;
+      margin: 0 0 22px;
+      padding: 0;
+      column-count: 1;
+    }
+    .module-list li {
+      font-size: 13px;
+      line-height: 1.45;
+      color: var(--ink-soft);
+      padding: 5px 0;
+      border-top: 1px solid #f0f0f0;
+      display: flex;
+      gap: 9px;
+    }
+    .module-list li:first-child { border-top: 0; }
+    .module-list li span {
+      color: var(--muted);
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      min-width: 18px;
+    }
+    .button {
+      margin-top: auto;
+      align-self: flex-start;
+      display: inline-block;
+      background: var(--ink);
+      color: #fff;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 700;
+      padding: 13px 20px;
+      transition: background .15s ease;
+    }
+    .card:hover .button { background: #000; }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 26px 0 40px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: .4px;
+    }
+
+    @media (max-width: 880px) {
+      .grid { grid-template-columns: 1fr; }
+      .masthead h1 { font-size: 36px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="shell">
+      <p class="eyebrow">MyBrainCo / Email System</p>
+      <h1>Email block libraries.</h1>
+      <p>A set of 600px-wide, greyscale wireframe libraries built as email-friendly HTML. Open any library to browse the modules, then swap in real copy, type, imagery and colour.</p>
+    </div>
+  </header>
+
+  <main class="shell section">
+    <div class="section-head">
+      <h2>Libraries</h2>
+      <span class="count">4 libraries &middot; 47 modules</span>
+    </div>
+
+    <div class="grid">
+
+      <article class="card">
+        <div class="card-top">
+          <p class="card-index">Library 01 &middot; 10 modules</p>
+          <h3>Hero blocks</h3>
+          <p>Interchangeable opening modules for launches, campaigns, offers, routines and product stories.</p>
+        </div>
+        <div class="card-body">
+          <ul class="module-list">
+            <li><span>01</span>Centre-stage product hero</li>
+            <li><span>02</span>Full-bleed editorial image hero</li>
+            <li><span>03</span>Clean split: copy left, product right</li>
+            <li><span>04</span>Image-first with overlapping content card</li>
+            <li><span>05</span>Routine-led hero with a quiet image band</li>
+            <li><span>06</span>Promotional campaign hero</li>
+            <li><span>07</span>Pairing or bundle hero</li>
+            <li><span>08</span>Proof-led minimalist hero</li>
+            <li><span>09</span>Customer-led social proof hero</li>
+            <li><span>10</span>High-impact statement + product strip</li>
+          </ul>
+          <a class="button" href="hero-blocks.html">Open library</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <p class="card-index">Library 02 &middot; 12 modules</p>
+          <h3>Benefit blocks</h3>
+          <p>Layouts for explaining product value without turning every email into a wall of copy.</p>
+        </div>
+        <div class="card-body">
+          <ul class="module-list">
+            <li><span>01</span>Core benefit triad</li>
+            <li><span>02</span>Product plus stacked benefit list</li>
+            <li><span>03</span>Image-led benefit story</li>
+            <li><span>04</span>How it works — 3 steps</li>
+            <li><span>05</span>Ingredient spotlight</li>
+            <li><span>06</span>Formula proof / quality standards</li>
+            <li><span>07</span>Routine / how to use it</li>
+            <li><span>08</span>Made for / use case grid</li>
+            <li><span>09</span>Why this formula / comparison</li>
+            <li><span>10</span>Myth versus fact</li>
+            <li><span>11</span>The science, simply</li>
+            <li><span>12</span>Benefit FAQ</li>
+          </ul>
+          <a class="button" href="email-benefit-blocks.html">Open library</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <p class="card-index">Library 03 &middot; 12 modules</p>
+          <h3>Product selling blocks</h3>
+          <p>Conversion-focused modules for features, bundles, cross-sells, replenishment and quick-shop grids.</p>
+        </div>
+        <div class="card-body">
+          <ul class="module-list">
+            <li><span>01</span>Essential product feature</li>
+            <li><span>02</span>Product image + key reasons</li>
+            <li><span>03</span>Product card with offer anchor</li>
+            <li><span>04</span>Three-product bestseller grid</li>
+            <li><span>05</span>Choose your product</li>
+            <li><span>06</span>Bundle or routine stack</li>
+            <li><span>07</span>Product + formula details</li>
+            <li><span>08</span>Replenishment or repeat purchase</li>
+            <li><span>09</span>Add-on or cross-sell pairing</li>
+            <li><span>10</span>Product row with social proof</li>
+            <li><span>11</span>Quick-shop collection grid</li>
+            <li><span>12</span>New product release card</li>
+          </ul>
+          <a class="button" href="product-selling-blocks.html">Open library</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <p class="card-index">Library 04 &middot; 13 modules</p>
+          <h3>Offer &amp; urgency blocks</h3>
+          <p>Sale mechanics, deadlines, codes, gift thresholds, stock prompts and compact urgency strips for promotional emails.</p>
+        </div>
+        <div class="card-body">
+          <ul class="module-list">
+            <li><span>01</span>High-impact percentage-off offer</li>
+            <li><span>02</span>Code-led offer card</li>
+            <li><span>03</span>Countdown + deadline</li>
+            <li><span>04</span>Spend-and-save tiers</li>
+            <li><span>05</span>Free gift threshold</li>
+            <li><span>06</span>Limited bundle saving</li>
+            <li><span>07</span>Low-stock product prompt</li>
+            <li><span>08</span>Final-hours reminder</li>
+            <li><span>09</span>Shipping deadline</li>
+            <li><span>10</span>Category sale grid</li>
+            <li><span>11</span>Bulk-buy saving</li>
+            <li><span>12</span>Offer explainer / promo mechanics</li>
+            <li><span>13</span>Compact urgency strip</li>
+          </ul>
+          <a class="button" href="Offer-and-urgency-blocks.html">Open library</a>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <footer class="shell footer">
+    MyBrainCo email system &middot; greyscale wireframe libraries
+  </footer>
+</body>
+</html>

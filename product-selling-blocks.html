@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="x-apple-disable-message-reformatting">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>MyBrainCo — Product Selling Block Library (Greyscale)</title>
+<style>
+  /*
+    MyBrainCo Email Product Selling Block Library
+    --------------------------------------------------------------
+    • 600px desktop canvas
+    • Table-first layouts for broad email-client support
+    • Greyscale only; replace fonts, fills and image URLs later
+    • Mobile stacks below 620px
+  */
+  html, body { margin:0 !important; padding:0 !important; width:100% !important; height:100% !important; }
+  * { -ms-text-size-adjust:100%; -webkit-text-size-adjust:100%; }
+  table { border-spacing:0 !important; border-collapse:collapse !important; table-layout:fixed !important; margin:0 auto !important; }
+  table table table { table-layout:auto; }
+  img { -ms-interpolation-mode:bicubic; border:0; outline:none; text-decoration:none; display:block; width:100%; height:auto; }
+  a { text-decoration:none; }
+  .wrapper { width:100%; background:#ededed; }
+  .email-shell { width:600px; max-width:600px; background:#ffffff; }
+  .eyebrow { font-family:Arial,Helvetica,sans-serif; font-size:10px; line-height:15px; letter-spacing:1.55px; text-transform:uppercase; color:#555555; font-weight:700; }
+  .h-xl { font-family:Arial,Helvetica,sans-serif; font-size:46px; line-height:47px; letter-spacing:-2.45px; color:#111111; font-weight:700; }
+  .h-lg { font-family:Arial,Helvetica,sans-serif; font-size:33px; line-height:36px; letter-spacing:-1.65px; color:#111111; font-weight:700; }
+  .h-md { font-family:Arial,Helvetica,sans-serif; font-size:25px; line-height:29px; letter-spacing:-1.15px; color:#111111; font-weight:700; }
+  .h-sm { font-family:Arial,Helvetica,sans-serif; font-size:18px; line-height:22px; letter-spacing:-.45px; color:#111111; font-weight:700; }
+  .body { font-family:Arial,Helvetica,sans-serif; font-size:15px; line-height:23px; color:#515151; }
+  .body-sm { font-family:Arial,Helvetica,sans-serif; font-size:13px; line-height:19px; color:#5b5b5b; }
+  .micro { font-family:Arial,Helvetica,sans-serif; font-size:11px; line-height:16px; color:#686868; }
+  .price { font-family:Arial,Helvetica,sans-serif; font-size:20px; line-height:24px; color:#111111; font-weight:700; }
+  .was-price { font-family:Arial,Helvetica,sans-serif; font-size:13px; line-height:18px; color:#777777; text-decoration:line-through; }
+  .button { display:inline-block; font-family:Arial,Helvetica,sans-serif; font-size:12px; line-height:14px; letter-spacing:.85px; text-transform:uppercase; font-weight:700; padding:14px 18px; background:#111111; color:#ffffff !important; border:1px solid #111111; }
+  .button-light { display:inline-block; font-family:Arial,Helvetica,sans-serif; font-size:12px; line-height:14px; letter-spacing:.85px; text-transform:uppercase; font-weight:700; padding:14px 18px; background:#ffffff; color:#111111 !important; border:1px solid #ffffff; }
+  .button-outline { display:inline-block; font-family:Arial,Helvetica,sans-serif; font-size:12px; line-height:14px; letter-spacing:.85px; text-transform:uppercase; font-weight:700; padding:13px 18px; background:transparent; color:#111111 !important; border:1px solid #111111; }
+  .badge { display:inline-block; font-family:Arial,Helvetica,sans-serif; font-size:10px; line-height:12px; letter-spacing:1px; text-transform:uppercase; font-weight:700; padding:7px 9px; background:#111111; color:#ffffff; }
+  .badge-light { display:inline-block; font-family:Arial,Helvetica,sans-serif; font-size:10px; line-height:12px; letter-spacing:1px; text-transform:uppercase; font-weight:700; padding:7px 9px; background:#ffffff; color:#111111; }
+  .module-label { font-family:Arial,Helvetica,sans-serif; font-size:11px; line-height:14px; letter-spacing:1.3px; text-transform:uppercase; font-weight:700; color:#777777; padding:18px 24px 10px; background:#ededed; }
+  .rule { height:1px; line-height:1px; font-size:1px; background:#d7d7d7; }
+  .dot { display:inline-block; width:7px; height:7px; background:#111111; border-radius:7px; }
+  .mobile-show { display:none; max-height:0; overflow:hidden; }
+  @media screen and (max-width:620px) {
+    .email-shell { width:100% !important; }
+    .mobile-stack { display:block !important; width:100% !important; }
+    .mobile-full { display:block !important; width:100% !important; }
+    .mobile-hide { display:none !important; }
+    .mobile-show { display:block !important; max-height:none !important; overflow:visible !important; }
+    .pad-40 { padding-left:24px !important; padding-right:24px !important; }
+    .pad-32 { padding-left:22px !important; padding-right:22px !important; }
+    .pad-28 { padding-left:20px !important; padding-right:20px !important; }
+    .h-xl { font-size:39px !important; line-height:41px !important; letter-spacing:-2.05px !important; }
+    .h-lg { font-size:30px !important; line-height:33px !important; letter-spacing:-1.5px !important; }
+    .mobile-space { height:24px !important; }
+    .mobile-center { text-align:center !important; }
+    .mobile-pad-top { padding-top:22px !important; }
+    .mobile-card-gap { height:14px !important; }
+  }
+</style>
+</head>
+<body>
+<center role="article" aria-roledescription="email" lang="en" style="width:100%; background:#ededed;">
+  <table role="presentation" class="wrapper" width="100%"><tr><td align="center">
+
+    <!-- ===== COVER / INTRO ===== -->
+    <table role="presentation" class="email-shell" width="600">
+      <tr><td style="padding:44px 40px 42px; background:#151515;">
+        <div class="eyebrow" style="color:#bdbdbd;">MyBrainCo / Email System</div>
+        <div class="h-lg" style="color:#ffffff; padding-top:14px;">Product-selling blocks<br>in greyscale.</div>
+        <div class="body" style="color:#cbcbcb; padding-top:17px; max-width:460px;">A modular 600px email library for taking someone from interest to product page, cart or bundle.</div>
+        <div class="body-sm" style="color:#999999; padding-top:24px;">Everything below is intentionally generic. Replace imagery, type, colour, offers and product details when you apply the MyBrainCo system.</div>
+      </td></tr>
+    </table>
+
+    <!-- ===== 01 / Core product feature ===== -->
+    <table role="presentation" class="email-shell" width="600">
+      <tr><td class="module-label">01 / Essential product feature</td></tr>
+      <tr><td style="background:#f3f3f3; padding:32px 32px 36px;" class="pad-32">
+        <table role="presentation" width="100%">
+          <tr><td align="center" style="padding-bottom:22px;"><div class="eyebrow">A better daily baseline</div><div class="h-lg" style="padding-top:10px;">One product.<br>Clear reason to buy.</div></td></tr>
+          <tr><td><img src="https://placehold.co/536x300/d8d8d8/555555?text=Hero+product+image" alt="Example product image" width="536" style="width:100%; max-width:536px; height:auto;"></td></tr>
+          <tr><td style="padding-top:24px;" align="center">
+            <div class="h-md">Product Name</div>
+            <div class="body" style="padding-top:7px; max-width:380px;">A concise product explanation that lands the primary benefit and what makes the formula worth choosing.</div>
+            <div style="padding-top:15px;"><span class="price">$00.00</span>&nbsp;&nbsp;<span class="micro">or 4 interest-free payments</span></div>
+            <div style="padding-top:19px;"><a href="#" class="button">Shop product</a></div>
+          </td></tr>
+        </table>
+      </td></tr>
+    </table>
+
+    <!-- ===== 02 / Product + reasons ===== -->
+    <table role="presentation" class="email-shell" width="600">
+      <tr><td class="module-label">02 / Product image + key reasons</td></tr>
+      <tr><td style="padding:0; background:#ffffff;">
+        <table role="presentation" width="100%"><tr>
+          <td width="286" class="mobile-stack" valign="top"><img src="https://placehold.co/286x475/d6d6d6/555555?text=Product+image" alt="Example product image" width="286" style="width:100%; max-width:286px;"></td>
+          <td width="314" class="mobile-stack pad-32" valign="top" style="padding:34px 32px 30px;">
+            <div class="eyebrow">Formula focus</div>
+            <div class="h-md" style="padding-top:10px;">The everyday essential.</div>
+            <div class="body-sm" style="padding-top:10px;">A short supporting paragraph that gives enough context without repeating the entire product page.</div>
+            <table role="presentation" width="100%" style="margin-top:20px !important;">
+              <tr><td width="22" valign="top" style="padding-top:5px;"><span class="dot"></span></td><td class="body-sm" style="padding-bottom:12px;"><strong style="color:#111111;">Reason one</strong><br>A concrete, plain-English supporting point.</td></tr>
+              <tr><td width="22" valign="top" style="padding-top:5px;"><span class="dot"></span></td><td class="body-sm" style="padding-bottom:12px;"><strong style="color:#111111;">Reason two</strong><br>A second product or quality cue.</td></tr>
+              <tr><td width="22" valign="top" style="padding-top:5px;"><span class="dot"></span></td><td class="body-sm"><strong style="color:#111111;">Reason three</strong><br>A final reassurance or use case.</td></tr>
+            </table>
+            <div style="padding-top:21px;"><span class="price">$00.00</span></div>
+            <div style="padding-top:17px;"><a href="#" class="button">Shop now</a></div>
+          </td>
+        </tr></table>
+      </td></tr>
+    </table>
+
+    <!-- ===== 03 / Offer product card ===== -->
+    <table role="presentation" class="email-shell" width="600">
+      <tr><td class="module-label">03 / Product card with offer anchor</td></tr>
+      <tr><td style="padding:26px 24px 30px; background:#f0f0f0;" class="pad-28">
+        <table role="presentation" width="100%" style="background:#ffffff;">
+          <tr><td style="padding:14px 14px 0;"><img src="https://placehold.co/524x235/d8d8d8/555555?text=Product+or+campaign+image" alt="Example product image" width="524" style="width:100%; max-width:524px;"></td></tr>
+          <tr><td style="padding:22px 24px 26px;" class="pad-28">
+            <table role="presentation" width="100%"><tr>
+              <td valign="top" class="mobile-stack" width="320"><span class="badge">Save 25%</span><div class="h-md" style="padding-top:12px;">Product Name</div><div class="body-sm" style="padding-top:7px; max-width:280px;">A compact offer-friendly product description that still feels premium.</div></td>
+              <td valign="bottom" align="right" class="mobile-stack mobile-pad-top mobile-center" width="180"><span class="was-price">$00.00</span><br><span class="price">$00.00</span><br><span class="micro">Limited-time offer</span></td>
+            </tr></table>
+            <div style="padding-top:19px;"><a href="#" class="button">Shop the offer</a></div>
+          </td></tr>
+        </table>
+      </td></tr>
+    </table>
+
+    <!-- ===== 04 / Bestsellers grid ===== -->
+    <table role="presentation" class="email-shell" width="600">
+      <tr><td class="module-label">04 / Three-product bestseller grid</td></tr>
+      <tr><td style="padding:36px 24px 38px; background:#ffffff;" class="pad-28">
+        <div align="center" class="eyebrow">Where to start</div>
+        <div align="center" class="h-lg" style="padding-top:10px;">Customer favourites.</div>
+        <div align="center" class="body-sm" style="padding:9px 20px 24px;">A clean, quick-scanning way to surface more than one product without losing focus.</div>
+        <table role="presentation" width="100%"><tr>
+          <td width="33.33%" valign="top" class="mobile-stack" style="padding:0 6px 0 0;"><img src="https://placehold.co/170x170/d8d8d8/555555?text=Product" alt="Product one" width="170" style="width:100%; max-width:170px;"><div class="h-sm" style="padding-top:12px;">Product One</div><div class="body-sm" style="padding-top:4px;">Short benefit line.</div><div style="padding-top:9px;"><span class="price" style="font-size:16px;">$00.00</span></div><div style="padding-top:13px;"><a href="#" class="button-outline">Shop</a></div></td>
+          <td width="33.33%" valign="top" class="mobile-stack" style="padding:0 3px;"><img src="https://placehold.co/170x170/cfcfcf/555555?text=Product" alt="Product two" width="170" style="width:100%; max-width:170px;"><div class="h-sm" style="padding-top:12px;">Product Two</div><div class="body-sm" style="padding-top:4px;">Short benefit line.</div><div style="padding-top:9px;"><span class="price" style="font-size:16px;">$00.00</span></div><div style="padding-top:13px;"><a href="#" class="button-outline">Shop</a></div></td>
+          <td width="33.33%" valign="top" class="mobile-stack" style="padding:0 0 0 6px;"><img src="https://placehold.co/170x170/d8d8d8/555555?text=Product" alt="Product three" width="170" style="width:100%; max-width:170px;"><div class="h-sm" style="padding-top:12px;">Product Three</div><div class="body-sm" style="padding-top:4px;">Short benefit line.</div><div style="padding-top:9px;"><span class="price" style="font-size:16px;">$00.00</span></div><div style="padding-top:13px;"><a href="#" class="button-outline">Shop</a></div></td>
+        </tr></table>
+      </td></tr>
+    </table>
+
+    <!-- ===== 05 / Compare / choose your product ===== -->
+    <table role="presentation" class="email-shell" width="600">
+      <tr><td class="module-label">05 / Choose your product</td></tr>
+      <tr><td style="padding:36px 28px 38px; background:#202020;" class="pad-28">
+        <div class="eyebrow" style="color:#aaaaaa;" align="center">Choose your support</div>
+        <div class="h-lg" style="padding-top:10px; color:#ffffff;" align="center">Two ways to start.</div>
+        <table role="presentation" width="100%" style="margin-top:25px !important;"><tr>
+          <td width="50%" valign="top" class="mobile-stack" style="padding-right:7px;"><table role="presentation" width="100%" style="background:#ffffff;"><tr><td><img src="https://placehold.co/250x215/d8d8d8/555555?text=Product+A" alt="Product A" width="250" style="width:100%; max-width:250px;"></td></tr><tr><td style="padding:20px 18px 22px;"><div class="eyebrow">For everyday use</div><div class="h-sm" style="padding-top:8px;">Product A</div><div class="body-sm" style="padding-top:7px;">Use this for a short, practical purpose statement.</div><div style="padding-top:12px;"><span class="price" style="font-size:16px;">$00.00</span></div><div style="padding-top:15px;"><a href="#" class="button">Shop A</a></div></td></tr></table></td>
+          <td width="50%" valign="top" class="mobile-stack mobile-pad-top" style="padding-left:7px;"><table role="presentation" width="100%" style="background:#ffffff;"><tr><td><img src="https://placehold.co/250x215/cfcfcf/555555?text=Product+B" alt="Product B" width="250" style="width:100%; max-width:250px;"></td></tr><tr><td style="padding:20px 18px 22px;"><div class="eyebrow">For a specific goal</div><div class="h-sm" style="padding-top:8px;">Product B</div><div class="body-sm" style="padding-top:7px;">Use this for a short, practical purpose statement.</div><div style="padding-top:12px;"><span class="price" style="font-size:16px;">$00.00</span></div><div style="padding-top:15px;"><a href="#" class="button">Shop B</a></div></td></tr></table></td>
+        </tr></table>
+      </td></tr>
+    </table>
+
+    <!-- ===== 06 / Bundle stack ===== -->
+    <table role="presentation" class="email-shell" width="600">
+      <tr><td class="module-label">06 / Bundle or routine stack</td></tr>
+      <tr><td style="padding:34px 32px 36px; background:#f3f3f3;" class="pad-32">
+        <table role="presentation" width="100%"><tr>
+          <td width="250" valign="top" class="mobile-stack"><img src="https://placehold.co/250x345/d6d6d6/555555?text=Two+or+three+products" alt="Example product bundle" width="250" style="width:100%; max-width:250px;"></td>
+          <td width="286" valign="top" class="mobile-stack mobile-pad-top" style="padding-left:30px;">
+            <div class="badge">Bundle &amp; save</div>
+            <div class="h-md" style="padding-top:13px;">Your complete routine.</div>
+            <div class="body-sm" style="padding-top:9px;">For products that make more sense together than separately. Keep the story short: goal, products, saving.</div>
+            <table role="presentation" width="100%" style="margin-top:16px !important; border-top:1px solid #cccccc; border-bottom:1px solid #cccccc;"><tr><td class="body-sm" style="padding:10px 0;"><strong style="color:#111111;">01</strong>&nbsp;&nbsp; Product One</td></tr><tr><td class="body-sm" style="padding:10px 0; border-top:1px solid #d7d7d7;"><strong style="color:#111111;">02</strong>&nbsp;&nbsp; Product Two</td></tr><tr><td class="body-sm" style="padding:10px 0; border-top:1px solid #d7d7d7;"><strong style="color:#111111;">03</strong>&nbsp;&nbsp; Product Three</td></tr></table>
+            <div style="padding-top:17px;"><span class="was-price">$00.00</span>&nbsp;&nbsp;<span class="price">$00.00</span></div>
+            <div style="padding-top:16px;"><a href="#" class="button">Shop the bundle</a></div>
+          </td>
+        </tr></table>
+      </td></tr>
+    </table>
+
+    <!-- ===== 07 / Product with formula details ===== -->
+    <table role="presentation" class="email-shell" width="600">
+      <tr><td class="module-label">07 / Product + formula details</td></tr>
+      <tr><td style="padding:0; background:#ffffff;">
+        <table role="presentation" width="100%"><tr>
+          <td width="308" valign="top" class="mobile-stack pad-32" style="padding:37px 28px 34px 32px;">
+            <div class="eyebrow">Inside the formula</div>
+            <div class="h-md" style="padding-top:10px;">Made to make sense.</div>
+            <div class="body-sm" style="padding-top:10px;">This module leads with the product but lets you show two or three differentiating formula facts.</div>
+            <table role="presentation" width="100%" style="margin-top:20px !important;">
+              <tr><td valign="top" width="60" class="micro" style="padding:2px 0 11px; font-weight:700; color:#111111;">00 mg</td><td valign="top" class="body-sm" style="padding-bottom:11px;">Ingredient or formula detail.</td></tr>
+              <tr><td valign="top" width="60" class="micro" style="padding:2px 0 11px; font-weight:700; color:#111111;">0x</td><td valign="top" class="body-sm" style="padding-bottom:11px;">Quality, amount or format cue.</td></tr>
+              <tr><td valign="top" width="60" class="micro" style="padding:2px 0 11px; font-weight:700; color:#111111;">1/day</td><td valign="top" class="body-sm" style="padding-bottom:11px;">Simple usage instruction.</td></tr>
+            </table>
+            <div style="padding-top:13px;"><a href="#" class="button-outline">See full details</a></div>
+          </td>
+          <td width="292" valign="top" class="mobile-stack"><img src="https://placehold.co/292x470/d5d5d5/555555?text=Product+image" alt="Product image" width="292" style="width:100%; max-width:292px;"></td>
+        </tr></table>
+      </td></tr>
+    </table>
+
+    <!-- ===== 08 / Replenishment ===== -->
+    <table role="presentation" class="email-shell" width="600">
+      <tr><td class="module-label">08 / Replenishment or repeat purchase</td></tr>
+      <tr><td style="padding:30px 32px; background:#111111;" class="pad-32">
+        <table role="presentation" width="100%"><tr>
+          <td width="160" class="mobile-stack" valign="middle"><img src="https://placehold.co/150x150/4d4d4d/d9d9d9?text=Product" alt="Product image" width="150" style="width:100%; max-width:150px;"></td>
+          <td width="376" class="mobile-stack mobile-pad-top" valign="middle" style="padding-left:22px;">
+            <div class="eyebrow" style="color:#aaaaaa;">Keep your routine moving</div>
+            <div class="h-md" style="padding-top:9px; color:#ffffff;">Ready for your next one?</div>
+            <div class="body-sm" style="padding-top:8px; color:#c8c8c8;">A lightweight reorder prompt for someone who already knows the product.</div>
+            <div style="padding-top:16px;"><span class="price" style="color:#ffffff;">$00.00</span>&nbsp;&nbsp;<a href="#" class="button-light">Reorder now</a></div>
+          </td>
+        </tr></table>
+      </td></tr>
+    </table>
+
+    <!-- ===== 09 / Cross-sell pairing ===== -->
+    <table role="presentation" class="email-shell" width="600">
+      <tr><td class="module-label">09 / Add-on or cross-sell pairing</td></tr>
+      <tr><td style="padding:34px 24px 36px; background:#ffffff;" class="pad-28">
+        <table role="presentation" width="100%"><tr>
+          <td width="228" valign="top" class="mobile-stack"><img src="https://placehold.co/228x240/d8d8d8/555555?text=Product+pair" alt="Product pair image" width="228" style="width:100%; max-width:228px;"></td>
+          <td width="308" valign="top" class="mobile-stack mobile-pad-top" style="padding-left:30px;">
+            <div class="eyebrow">Pairs well with</div>
+            <div class="h-md" style="padding-top:10px;">A natural next step.</div>
+            <div class="body-sm" style="padding-top:9px;">Use this after a core product module to cross-sell one genuinely complementary item.</div>
+            <div class="rule" style="margin-top:17px !important;"></div>
+            <div class="h-sm" style="padding-top:15px;">Product Two</div>
+            <div class="body-sm" style="padding-top:4px;">Short companion-product benefit.</div>
+            <div style="padding-top:11px;"><span class="price" style="font-size:16px;">$00.00</span></div>
+            <div style="padding-top:15px;"><a href="#" class="button">Add to routine</a></div>
+          </td>
+        </tr></table>
+      </td></tr>
+    </table>
+
+    <!-- ===== 10 / Product story row ===== -->
+    <table role="presentation" class="email-shell" width="600">
+      <tr><td class="module-label">10 / Product row with social proof</td></tr>
+      <tr><td style="padding:26px 24px; background:#e8e8e8;" class="pad-28">
+        <table role="presentation" width="100%" style="background:#ffffff;"><tr>
+          <td width="184" class="mobile-stack" valign="top"><img src="https://placehold.co/184x250/d4d4d4/555555?text=Product" alt="Product image" width="184" style="width:100%; max-width:184px;"></td>
+          <td width="352" class="mobile-stack pad-28" valign="top" style="padding:24px 24px 25px;">
+            <div class="eyebrow">Most-loved formula</div>
+            <div class="h-sm" style="padding-top:8px;">Product Name</div>
+            <div class="body-sm" style="padding-top:7px;">A compact product story for campaigns where the customer quote does some of the persuasion.</div>
+            <div style="padding-top:13px; border-top:1px solid #d9d9d9; margin-top:14px;"><div class="body-sm" style="color:#222222; font-style:italic;">“A clean, believable customer quote placeholder that fits in two lines.”</div><div class="micro" style="padding-top:5px;">Customer name, verified buyer</div></div>
+            <div style="padding-top:17px;"><span class="price" style="font-size:16px;">$00.00</span>&nbsp;&nbsp;<a href="#" class="button">Shop now</a></div>
+          </td>
+        </tr></table>
+      </td></tr>
+    </table>
+
+    <!-- ===== 11 / Four-up quick shop ===== -->
+    <table role="presentation" class="email-shell" width="600">
+      <tr><td class="module-label">11 / Quick-shop collection grid</td></tr>
+      <tr><td style="padding:36px 24px 38px; background:#f5f5f5;" class="pad-28">
+        <div class="eyebrow" align="center">Shop by goal</div>
+        <div class="h-lg" align="center" style="padding-top:10px;">Find your fit.</div>
+        <table role="presentation" width="100%" style="margin-top:25px !important;"><tr>
+          <td width="50%" class="mobile-stack" valign="top" style="padding:0 7px 14px 0;"><table role="presentation" width="100%" style="background:#ffffff;"><tr><td><img src="https://placehold.co/258x125/d7d7d7/555555?text=Goal+image" alt="Goal one" width="258" style="width:100%; max-width:258px;"></td></tr><tr><td style="padding:15px 16px 17px;"><div class="h-sm">Energy</div><div class="body-sm" style="padding-top:3px;">Short goal line.</div><div style="padding-top:12px;"><a href="#" class="button-outline">Explore</a></div></td></tr></table></td>
+          <td width="50%" class="mobile-stack" valign="top" style="padding:0 0 14px 7px;"><table role="presentation" width="100%" style="background:#ffffff;"><tr><td><img src="https://placehold.co/258x125/cfcfcf/555555?text=Goal+image" alt="Goal two" width="258" style="width:100%; max-width:258px;"></td></tr><tr><td style="padding:15px 16px 17px;"><div class="h-sm">Recovery</div><div class="body-sm" style="padding-top:3px;">Short goal line.</div><div style="padding-top:12px;"><a href="#" class="button-outline">Explore</a></div></td></tr></table></td>
+        </tr><tr>
+          <td width="50%" class="mobile-stack" valign="top" style="padding:0 7px 0 0;"><table role="presentation" width="100%" style="background:#ffffff;"><tr><td><img src="https://placehold.co/258x125/cfcfcf/555555?text=Goal+image" alt="Goal three" width="258" style="width:100%; max-width:258px;"></td></tr><tr><td style="padding:15px 16px 17px;"><div class="h-sm">Focus</div><div class="body-sm" style="padding-top:3px;">Short goal line.</div><div style="padding-top:12px;"><a href="#" class="button-outline">Explore</a></div></td></tr></table></td>
+          <td width="50%" class="mobile-stack" valign="top" style="padding:0 0 0 7px;"><table role="presentation" width="100%" style="background:#ffffff;"><tr><td><img src="https://placehold.co/258x125/d7d7d7/555555?text=Goal+image" alt="Goal four" width="258" style="width:100%; max-width:258px;"></td></tr><tr><td style="padding:15px 16px 17px;"><div class="h-sm">Gut health</div><div class="body-sm" style="padding-top:3px;">Short goal line.</div><div style="padding-top:12px;"><a href="#" class="button-outline">Explore</a></div></td></tr></table></td>
+        </tr></table>
+      </td></tr>
+    </table>
+
+    <!-- ===== 12 / New release product launch ===== -->
+    <table role="presentation" class="email-shell" width="600">
+      <tr><td class="module-label">12 / New product release card</td></tr>
+      <tr><td style="padding:0; background:#111111;">
+        <table role="presentation" width="100%"><tr>
+          <td width="300" valign="top" class="mobile-stack pad-32" style="padding:38px 30px 38px 34px;">
+            <div class="badge-light">New release</div>
+            <div class="h-lg" style="padding-top:14px; color:#ffffff;">Meet Product Name.</div>
+            <div class="body-sm" style="padding-top:10px; color:#c7c7c7;">A product launch card that makes one clear, memorable point, then gets out of the way.</div>
+            <div style="padding-top:18px;"><span class="price" style="color:#ffffff;">$00.00</span></div>
+            <div style="padding-top:17px;"><a href="#" class="button-light">Shop new release</a></div>
+          </td>
+          <td width="300" valign="bottom" class="mobile-stack"><img src="https://placehold.co/300x390/4b4b4b/dcdcdc?text=New+product+image" alt="New product image" width="300" style="width:100%; max-width:300px;"></td>
+        </tr></table>
+      </td></tr>
+    </table>
+
+    <!-- Footer note -->
+    <table role="presentation" class="email-shell" width="600">
+      <tr><td style="padding:34px 32px 44px; background:#ededed;" class="pad-32">
+        <div class="eyebrow">Library note</div>
+        <div class="body-sm" style="padding-top:8px; max-width:490px;">These are selling modules, not hero sections. Use one primary product-selling block per email, then layer in proof, education or a related product only where it makes the choice easier.</div>
+      </td></tr>
+    </table>
+
+  </td></tr></table>
+</center>
+</body>
+</html>

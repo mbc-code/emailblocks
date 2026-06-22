@@ -1,0 +1,701 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="x-apple-disable-message-reformatting">
+<title>MyBrainCo — Offer & Urgency Blocks (Greyscale)</title>
+<style>
+  /* =========================================================
+     MYBRAINCO EMAIL MODULE LIBRARY — OFFER & URGENCY
+     Greyscale design reference. 600px desktop email canvas.
+     Each module is self-contained and can be rebuilt natively
+     in Klaviyo or adapted into a custom HTML email.
+     ========================================================= */
+
+  html, body { margin:0 !important; padding:0 !important; background:#eeeeee; }
+  body { width:100% !important; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; }
+  table { border-spacing:0; border-collapse:collapse; }
+  td { padding:0; }
+  img { border:0; outline:none; text-decoration:none; display:block; }
+  a { color:inherit; text-decoration:none; }
+  .wrapper { width:100%; table-layout:fixed; background:#eeeeee; padding:32px 0 56px; }
+  .canvas { width:600px; max-width:600px; background:#ffffff; margin:0 auto; }
+  .module-gap { height:32px; line-height:32px; font-size:0; }
+  .label-wrap { width:600px; max-width:600px; margin:0 auto 10px; }
+  .module-label {
+    font-family:Arial, Helvetica, sans-serif;
+    color:#555555;
+    font-size:11px;
+    line-height:16px;
+    font-weight:700;
+    letter-spacing:1.2px;
+    text-transform:uppercase;
+    padding:0 4px;
+  }
+  .module-note {
+    font-family:Arial, Helvetica, sans-serif;
+    color:#7a7a7a;
+    font-size:12px;
+    line-height:18px;
+    padding:4px 4px 0;
+  }
+
+  /* Email-safe atom classes */
+  .eyebrow {
+    font-family:Arial, Helvetica, sans-serif;
+    color:#595959;
+    font-size:11px;
+    line-height:16px;
+    font-weight:700;
+    letter-spacing:1.3px;
+    text-transform:uppercase;
+  }
+  .h1 {
+    font-family:Arial, Helvetica, sans-serif;
+    color:#151515;
+    font-size:42px;
+    line-height:43px;
+    letter-spacing:-1.8px;
+    font-weight:700;
+    margin:0;
+  }
+  .h2 {
+    font-family:Arial, Helvetica, sans-serif;
+    color:#171717;
+    font-size:29px;
+    line-height:32px;
+    letter-spacing:-0.8px;
+    font-weight:700;
+    margin:0;
+  }
+  .h3 {
+    font-family:Arial, Helvetica, sans-serif;
+    color:#202020;
+    font-size:19px;
+    line-height:24px;
+    letter-spacing:-0.2px;
+    font-weight:700;
+    margin:0;
+  }
+  .body-copy {
+    font-family:Arial, Helvetica, sans-serif;
+    color:#4d4d4d;
+    font-size:15px;
+    line-height:22px;
+    margin:0;
+  }
+  .small-copy {
+    font-family:Arial, Helvetica, sans-serif;
+    color:#6c6c6c;
+    font-size:12px;
+    line-height:18px;
+    margin:0;
+  }
+  .fine-print {
+    font-family:Arial, Helvetica, sans-serif;
+    color:#777777;
+    font-size:11px;
+    line-height:16px;
+    margin:0;
+  }
+  .button-dark {
+    background:#191919;
+    border-radius:4px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:13px;
+    line-height:16px;
+    font-weight:700;
+    letter-spacing:.2px;
+    color:#ffffff !important;
+    display:inline-block;
+    padding:15px 22px;
+  }
+  .button-light {
+    background:#ffffff;
+    border:1px solid #191919;
+    border-radius:4px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:13px;
+    line-height:16px;
+    font-weight:700;
+    letter-spacing:.2px;
+    color:#191919 !important;
+    display:inline-block;
+    padding:14px 21px;
+  }
+  .btn-cell { background:#191919; border-radius:4px; }
+  .btn-cell-light { background:#ffffff; border:1px solid #191919; border-radius:4px; }
+  .placeholder {
+    background:#d8d8d8;
+    color:#777777;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:11px;
+    line-height:15px;
+    text-align:center;
+    letter-spacing:.3px;
+  }
+  .dark-placeholder {
+    background:#2a2a2a;
+    color:#d6d6d6;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:11px;
+    line-height:15px;
+    text-align:center;
+    letter-spacing:.3px;
+  }
+  .tag {
+    display:inline-block;
+    background:#e7e7e7;
+    border-radius:999px;
+    color:#333333;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:10px;
+    line-height:12px;
+    font-weight:700;
+    letter-spacing:.9px;
+    text-transform:uppercase;
+    padding:7px 10px;
+  }
+  .rule { height:1px; background:#dddddd; font-size:0; line-height:0; }
+
+  /* Responsive */
+  @media screen and (max-width: 620px) {
+    .wrapper { padding:18px 0 36px !important; }
+    .canvas, .label-wrap { width:100% !important; max-width:100% !important; }
+    .mobile-pad { padding-left:22px !important; padding-right:22px !important; }
+    .mobile-pad-18 { padding-left:18px !important; padding-right:18px !important; }
+    .h1 { font-size:36px !important; line-height:38px !important; letter-spacing:-1.4px !important; }
+    .h2 { font-size:27px !important; line-height:30px !important; }
+    .stack { display:block !important; width:100% !important; }
+    .stack-pad-top { padding-top:18px !important; }
+    .stack-pad-bottom { padding-bottom:18px !important; }
+    .hide-mobile { display:none !important; }
+    .full-btn { width:100% !important; box-sizing:border-box !important; text-align:center !important; }
+    .module-gap { height:24px !important; line-height:24px !important; }
+    .count-num { font-size:28px !important; line-height:30px !important; }
+  }
+</style>
+</head>
+
+<body>
+  <center class="wrapper">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td align="center">
+
+          <!-- LIBRARY INTRO: not an email module -->
+          <table role="presentation" class="label-wrap" width="600" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td class="module-label">MyBrainCo / Email module library</td>
+            </tr>
+            <tr>
+              <td class="module-note">Offer &amp; urgency blocks — 600px email canvas, greyscale only. Copy, colour, type, imagery and offer logic are placeholders.</td>
+            </tr>
+          </table>
+
+          <!-- ============ 01: BIG PERCENTAGE OFFER ============ -->
+          <table role="presentation" class="label-wrap" width="600" cellpadding="0" cellspacing="0" border="0">
+            <tr><td class="module-label">01 / High-impact percentage-off offer</td></tr>
+            <tr><td class="module-note">Best for a straightforward sitewide or category sale. Keep the exact conditions beneath the CTA.</td></tr>
+          </table>
+          <table role="presentation" class="canvas" width="600" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td style="background:#1c1c1c; padding:18px 36px 10px;" class="mobile-pad" align="center">
+                <span style="font-family:Arial,Helvetica,sans-serif;color:#cfcfcf;font-size:10px;line-height:14px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;">Limited time offer</span>
+              </td>
+            </tr>
+            <tr>
+              <td style="background:#1c1c1c; padding:0 36px 4px;" class="mobile-pad" align="center">
+                <div style="font-family:Arial,Helvetica,sans-serif;color:#ffffff;font-size:94px;line-height:92px;font-weight:700;letter-spacing:-6px;">UP TO 40% OFF</div>
+              </td>
+            </tr>
+            <tr>
+              <td style="background:#1c1c1c; padding:6px 36px 28px;" class="mobile-pad" align="center">
+                <p style="font-family:Arial,Helvetica,sans-serif;color:#d1d1d1;font-size:15px;line-height:22px;margin:0;">Stock up on everyday wellness essentials while the offer is live.</p>
+              </td>
+            </tr>
+            <tr>
+              <td style="background:#1c1c1c; padding:0 36px 34px;" class="mobile-pad" align="center">
+                <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                  <tr><td class="btn-cell"><a href="#" class="button-dark" style="background:#ffffff;color:#181818 !important;">SHOP THE SALE&nbsp;&nbsp;→</a></td></tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td style="background:#1c1c1c; padding:0 36px 18px;" class="mobile-pad" align="center">
+                <p style="font-family:Arial,Helvetica,sans-serif;color:#9b9b9b;font-size:10px;line-height:15px;margin:0;">Offer ends 11:59pm Sunday. Exclusions and conditions apply.</p>
+              </td>
+            </tr>
+          </table>
+          <div class="module-gap">&nbsp;</div>
+
+          <!-- ============ 02: CODE OFFER ============ -->
+          <table role="presentation" class="label-wrap" width="600" cellpadding="0" cellspacing="0" border="0">
+            <tr><td class="module-label">02 / Code-led offer card</td></tr>
+            <tr><td class="module-note">Useful for welcome, VIP, bounce-back and referral codes. The offer code needs its own visual hierarchy.</td></tr>
+          </table>
+          <table role="presentation" class="canvas" width="600" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td style="padding:46px 50px 12px;" class="mobile-pad" align="center">
+                <span class="tag">A little something for you</span>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:8px 50px 10px;" class="mobile-pad" align="center">
+                <div class="h2">Take 15% off your first order.</div>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:0 65px 25px;" class="mobile-pad" align="center">
+                <p class="body-copy">A simple reward to get your MyBrainCo routine started.</p>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:0 50px 26px;" class="mobile-pad" align="center">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td style="border:1px dashed #777777; border-radius:7px; padding:17px 18px;" align="center">
+                      <span style="font-family:Arial,Helvetica,sans-serif;color:#202020;font-size:23px;line-height:28px;font-weight:700;letter-spacing:2.4px;">WELCOME15</span>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:0 50px 18px;" class="mobile-pad" align="center">
+                <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                  <tr><td class="btn-cell"><a href="#" class="button-dark">USE MY CODE&nbsp;&nbsp;→</a></td></tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:0 42px 38px;" class="mobile-pad" align="center">
+                <p class="fine-print">Enter the code at checkout. One use per customer. Cannot be used with other offers.</p>
+              </td>
+            </tr>
+          </table>
+          <div class="module-gap">&nbsp;</div>
+
+          <!-- ============ 03: COUNTDOWN ============ -->
+          <table role="presentation" class="label-wrap" width="600" cellpadding="0" cellspacing="0" border="0">
+            <tr><td class="module-label">03 / Countdown + deadline</td></tr>
+            <tr><td class="module-note">Use when there is a real cut-off. In Klaviyo, replace these static figures with the native countdown block or a tested timer embed.</td></tr>
+          </table>
+          <table role="presentation" class="canvas" width="600" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td style="background:#e6e6e6; padding:34px 40px 30px;" class="mobile-pad" align="center">
+                <div class="eyebrow" style="color:#555555;">Ends soon</div>
+                <div class="h2" style="margin-top:8px;">Your offer expires in:</div>
+                <table role="presentation" width="400" cellpadding="0" cellspacing="0" border="0" style="margin:22px auto 0;">
+                  <tr>
+                    <td width="116" style="background:#ffffff;border-radius:6px;padding:15px 4px 12px;" align="center">
+                      <div class="count-num" style="font-family:Arial,Helvetica,sans-serif;color:#171717;font-size:34px;line-height:36px;font-weight:700;letter-spacing:-1px;">02</div>
+                      <div style="font-family:Arial,Helvetica,sans-serif;color:#6a6a6a;font-size:9px;line-height:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-top:4px;">Days</div>
+                    </td>
+                    <td width="10">&nbsp;</td>
+                    <td width="116" style="background:#ffffff;border-radius:6px;padding:15px 4px 12px;" align="center">
+                      <div class="count-num" style="font-family:Arial,Helvetica,sans-serif;color:#171717;font-size:34px;line-height:36px;font-weight:700;letter-spacing:-1px;">14</div>
+                      <div style="font-family:Arial,Helvetica,sans-serif;color:#6a6a6a;font-size:9px;line-height:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-top:4px;">Hours</div>
+                    </td>
+                    <td width="10">&nbsp;</td>
+                    <td width="116" style="background:#ffffff;border-radius:6px;padding:15px 4px 12px;" align="center">
+                      <div class="count-num" style="font-family:Arial,Helvetica,sans-serif;color:#171717;font-size:34px;line-height:36px;font-weight:700;letter-spacing:-1px;">08</div>
+                      <div style="font-family:Arial,Helvetica,sans-serif;color:#6a6a6a;font-size:9px;line-height:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-top:4px;">Minutes</div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:23px 40px 34px;" class="mobile-pad" align="center">
+                <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                  <tr><td class="btn-cell"><a href="#" class="button-dark">SHOP BEFORE IT ENDS&nbsp;&nbsp;→</a></td></tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+          <div class="module-gap">&nbsp;</div>
+
+          <!-- ============ 04: TIERED SPEND OFFER ============ -->
+          <table role="presentation" class="label-wrap" width="600" cellpadding="0" cellspacing="0" border="0">
+            <tr><td class="module-label">04 / Spend-and-save tiers</td></tr>
+            <tr><td class="module-note">For tiered cart incentives or a free-gift ladder. Make the shopper’s next step visually obvious.</td></tr>
+          </table>
+          <table role="presentation" class="canvas" width="600" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td style="padding:42px 42px 10px;" class="mobile-pad" align="center">
+                <div class="eyebrow">Build your routine</div>
+                <div class="h2" style="margin-top:8px;">The more you add, the more you unlock.</div>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:15px 42px 25px;" class="mobile-pad">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td style="border:1px solid #dddddd;border-radius:7px;padding:17px 17px 17px 18px;">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                          <td width="83" valign="middle"><span style="font-family:Arial,Helvetica,sans-serif;color:#222222;font-size:18px;line-height:22px;font-weight:700;">$100+</span></td>
+                          <td valign="middle"><span class="body-copy" style="font-size:14px;line-height:20px;">Free standard shipping</span></td>
+                          <td width="28" valign="middle" align="right"><span style="font-family:Arial,Helvetica,sans-serif;color:#777777;font-size:20px;line-height:20px;">✓</span></td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr><td height="9" style="font-size:0;line-height:0;">&nbsp;</td></tr>
+                  <tr>
+                    <td style="background:#f2f2f2;border:1px solid #c9c9c9;border-radius:7px;padding:17px 17px 17px 18px;">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                          <td width="83" valign="middle"><span style="font-family:Arial,Helvetica,sans-serif;color:#222222;font-size:18px;line-height:22px;font-weight:700;">$150+</span></td>
+                          <td valign="middle"><span class="body-copy" style="font-size:14px;line-height:20px;">Free shipping + complimentary gift</span></td>
+                          <td width="28" valign="middle" align="right"><span style="font-family:Arial,Helvetica,sans-serif;color:#222222;font-size:20px;line-height:20px;">★</span></td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr><td height="9" style="font-size:0;line-height:0;">&nbsp;</td></tr>
+                  <tr>
+                    <td style="border:1px solid #dddddd;border-radius:7px;padding:17px 17px 17px 18px;">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                          <td width="83" valign="middle"><span style="font-family:Arial,Helvetica,sans-serif;color:#222222;font-size:18px;line-height:22px;font-weight:700;">$200+</span></td>
+                          <td valign="middle"><span class="body-copy" style="font-size:14px;line-height:20px;">Everything above + 10% off your order</span></td>
+                          <td width="28" valign="middle" align="right"><span style="font-family:Arial,Helvetica,sans-serif;color:#777777;font-size:20px;line-height:20px;">+</span></td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:0 42px 39px;" class="mobile-pad" align="center">
+                <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                  <tr><td class="btn-cell"><a href="#" class="button-dark">BUILD MY ROUTINE&nbsp;&nbsp;→</a></td></tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+          <div class="module-gap">&nbsp;</div>
+
+          <!-- ============ 05: FREE GIFT THRESHOLD ============ -->
+          <table role="presentation" class="label-wrap" width="600" cellpadding="0" cellspacing="0" border="0">
+            <tr><td class="module-label">05 / Free gift threshold</td></tr>
+            <tr><td class="module-note">For a high-value cart threshold. Works well when the gift is a familiar hero SKU.</td></tr>
+          </table>
+          <table role="presentation" class="canvas" width="600" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td style="background:#f1f1f1;padding:30px 32px 0;" class="mobile-pad">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td width="48%" valign="bottom" class="stack" style="padding:0 16px 30px 4px;">
+                      <span class="tag">Free gift</span>
+                      <div class="h2" style="margin-top:12px;">Spend $150. Get this on us.</div>
+                      <p class="body-copy" style="margin-top:12px;">Your complimentary product will automatically appear in cart.</p>
+                      <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top:21px;">
+                        <tr><td class="btn-cell"><a href="#" class="button-dark">UNLOCK MY GIFT&nbsp;&nbsp;→</a></td></tr>
+                      </table>
+                    </td>
+                    <td width="52%" valign="bottom" class="stack">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                          <td class="placeholder" style="height:278px;border-radius:10px 10px 0 0;background:#d6d6d6;">EXAMPLE GIFT PRODUCT<br>IMAGE / 1:1 OR 4:5</td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:14px 32px 22px;background:#f1f1f1;" class="mobile-pad">
+                <p class="fine-print">Automatically applied while stocks last. Eligible orders only. See offer terms for details.</p>
+              </td>
+            </tr>
+          </table>
+          <div class="module-gap">&nbsp;</div>
+
+          <!-- ============ 06: BUNDLE OFFER ============ -->
+          <table role="presentation" class="label-wrap" width="600" cellpadding="0" cellspacing="0" border="0">
+            <tr><td class="module-label">06 / Limited bundle saving</td></tr>
+            <tr><td class="module-note">Use for a curated pair or three-product routine. Make the saving concrete, but do not overcrowd it with product details.</td></tr>
+          </table>
+          <table role="presentation" class="canvas" width="600" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td style="padding:36px 35px 14px;" class="mobile-pad" align="center">
+                <div class="eyebrow">Routine bundle</div>
+                <div class="h2" style="margin-top:8px;">Your daily energy stack, for less.</div>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:10px 35px 20px;" class="mobile-pad">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td width="31%" class="placeholder" style="height:158px;border-radius:7px;">PRODUCT 01</td>
+                    <td width="3%">&nbsp;</td>
+                    <td width="31%" class="placeholder" style="height:158px;border-radius:7px;background:#cfcfcf;">PRODUCT 02</td>
+                    <td width="3%">&nbsp;</td>
+                    <td width="31%" class="placeholder" style="height:158px;border-radius:7px;background:#bfbfbf;">PRODUCT 03</td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:0 42px 8px;" class="mobile-pad" align="center">
+                <span style="font-family:Arial,Helvetica,sans-serif;color:#777777;font-size:13px;line-height:18px;text-decoration:line-through;">$179.85</span>
+                <span style="font-family:Arial,Helvetica,sans-serif;color:#171717;font-size:20px;line-height:24px;font-weight:700;margin-left:8px;">$134.89</span>
+                <span style="font-family:Arial,Helvetica,sans-serif;color:#555555;font-size:12px;line-height:18px;font-weight:700;margin-left:7px;">SAVE 25%</span>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:12px 35px 38px;" class="mobile-pad" align="center">
+                <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                  <tr><td class="btn-cell"><a href="#" class="button-dark">SHOP THE BUNDLE&nbsp;&nbsp;→</a></td></tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+          <div class="module-gap">&nbsp;</div>
+
+          <!-- ============ 07: LOW STOCK ============ -->
+          <table role="presentation" class="label-wrap" width="600" cellpadding="0" cellspacing="0" border="0">
+            <tr><td class="module-label">07 / Low-stock product prompt</td></tr>
+            <tr><td class="module-note">Use sparingly, only when stock pressure is real. It feels stronger with a product image than with red-alert language.</td></tr>
+          </table>
+          <table role="presentation" class="canvas" width="600" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td style="border:1px solid #d6d6d6;border-radius:8px;padding:0;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td width="42%" class="stack placeholder" style="height:258px;border-radius:7px 0 0 7px;background:#d4d4d4;">EXAMPLE PRODUCT<br>IMAGE / 4:5</td>
+                    <td width="58%" class="stack stack-pad-top stack-pad-bottom" style="padding:27px 28px 25px;" valign="middle">
+                      <span class="tag" style="background:#dddddd;">Almost gone</span>
+                      <div class="h3" style="margin-top:13px;">This one is moving quickly.</div>
+                      <p class="body-copy" style="font-size:14px;line-height:20px;margin-top:9px;">A simple reminder for the product your customers keep coming back to.</p>
+                      <p style="font-family:Arial,Helvetica,sans-serif;color:#252525;font-size:12px;line-height:17px;font-weight:700;margin:15px 0 0;">Only [X] left in this batch.</p>
+                      <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top:18px;">
+                        <tr><td class="btn-cell"><a href="#" class="button-dark">SHOP NOW&nbsp;&nbsp;→</a></td></tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+          <div class="module-gap">&nbsp;</div>
+
+          <!-- ============ 08: LAST CHANCE / FINAL HOURS ============ -->
+          <table role="presentation" class="label-wrap" width="600" cellpadding="0" cellspacing="0" border="0">
+            <tr><td class="module-label">08 / Final-hours reminder</td></tr>
+            <tr><td class="module-note">A clean, no-nonsense “last chance” block. Strong for an end-of-sale email when the hero is doing something different.</td></tr>
+          </table>
+          <table role="presentation" class="canvas" width="600" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td style="background:#242424;padding:39px 42px 13px;" class="mobile-pad" align="center">
+                <div class="eyebrow" style="color:#bdbdbd;">Final hours</div>
+                <div style="font-family:Arial,Helvetica,sans-serif;color:#ffffff;font-size:52px;line-height:51px;font-weight:700;letter-spacing:-2px;margin-top:6px;">DON’T MISS IT.</div>
+              </td>
+            </tr>
+            <tr>
+              <td style="background:#242424;padding:0 48px 22px;" class="mobile-pad" align="center">
+                <p style="font-family:Arial,Helvetica,sans-serif;color:#d2d2d2;font-size:15px;line-height:22px;margin:0;">The sale wraps up tonight at 11:59pm. Once it ends, prices return to normal.</p>
+              </td>
+            </tr>
+            <tr>
+              <td style="background:#242424;padding:0 42px 39px;" class="mobile-pad" align="center">
+                <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                  <tr><td style="background:#ffffff;border-radius:4px;"><a href="#" class="button-dark" style="background:#ffffff;color:#1d1d1d !important;">SHOP THE FINAL HOURS&nbsp;&nbsp;→</a></td></tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+          <div class="module-gap">&nbsp;</div>
+
+          <!-- ============ 09: SHIPPING DEADLINE ============ -->
+          <table role="presentation" class="label-wrap" width="600" cellpadding="0" cellspacing="0" border="0">
+            <tr><td class="module-label">09 / Shipping deadline</td></tr>
+            <tr><td class="module-note">Best for gifting periods and seasonal cut-offs. Add a real date and a clear time zone.</td></tr>
+          </table>
+          <table role="presentation" class="canvas" width="600" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td style="background:#ededed;padding:30px 33px 32px;" class="mobile-pad">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td width="84" class="stack" valign="top">
+                      <table role="presentation" width="64" cellpadding="0" cellspacing="0" border="0">
+                        <tr><td style="width:64px;height:64px;background:#262626;border-radius:50%;font-family:Arial,Helvetica,sans-serif;color:#ffffff;font-size:24px;line-height:64px;font-weight:700;text-align:center;">→</td></tr>
+                      </table>
+                    </td>
+                    <td class="stack stack-pad-top" valign="top">
+                      <div class="eyebrow">Delivery cut-off</div>
+                      <div class="h3" style="margin-top:7px;">Order by 1pm Thursday for dispatch before the long weekend.</div>
+                      <p class="body-copy" style="font-size:14px;line-height:20px;margin-top:8px;">Delivery times vary by location. Get your order in early to avoid disappointment.</p>
+                      <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top:17px;">
+                        <tr><td class="btn-cell"><a href="#" class="button-dark">ORDER IN TIME&nbsp;&nbsp;→</a></td></tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+          <div class="module-gap">&nbsp;</div>
+
+          <!-- ============ 10: CATEGORY SAVING GRID ============ -->
+          <table role="presentation" class="label-wrap" width="600" cellpadding="0" cellspacing="0" border="0">
+            <tr><td class="module-label">10 / Category sale grid</td></tr>
+            <tr><td class="module-note">A compact way to let customers self-select into sale categories. Good just below a campaign hero.</td></tr>
+          </table>
+          <table role="presentation" class="canvas" width="600" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td style="padding:39px 34px 17px;" class="mobile-pad" align="center">
+                <div class="eyebrow">Shop by goal</div>
+                <div class="h2" style="margin-top:8px;">Your routine, now on offer.</div>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:7px 34px 34px;" class="mobile-pad">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td width="48%" class="placeholder" style="height:160px;border-radius:7px;background:#d9d9d9;" valign="bottom">
+                      <div style="background:rgba(255,255,255,.88);padding:12px 10px;font-family:Arial,Helvetica,sans-serif;color:#222222;font-size:14px;line-height:18px;font-weight:700;">ENERGY&nbsp;&nbsp;→</div>
+                    </td>
+                    <td width="4%">&nbsp;</td>
+                    <td width="48%" class="placeholder" style="height:160px;border-radius:7px;background:#c6c6c6;" valign="bottom">
+                      <div style="background:rgba(255,255,255,.88);padding:12px 10px;font-family:Arial,Helvetica,sans-serif;color:#222222;font-size:14px;line-height:18px;font-weight:700;">RECOVERY&nbsp;&nbsp;→</div>
+                    </td>
+                  </tr>
+                  <tr><td colspan="3" height="14" style="font-size:0;line-height:0;">&nbsp;</td></tr>
+                  <tr>
+                    <td width="48%" class="placeholder" style="height:160px;border-radius:7px;background:#cdcdcd;" valign="bottom">
+                      <div style="background:rgba(255,255,255,.88);padding:12px 10px;font-family:Arial,Helvetica,sans-serif;color:#222222;font-size:14px;line-height:18px;font-weight:700;">GUT HEALTH&nbsp;&nbsp;→</div>
+                    </td>
+                    <td width="4%">&nbsp;</td>
+                    <td width="48%" class="placeholder" style="height:160px;border-radius:7px;background:#b7b7b7;" valign="bottom">
+                      <div style="background:rgba(255,255,255,.88);padding:12px 10px;font-family:Arial,Helvetica,sans-serif;color:#222222;font-size:14px;line-height:18px;font-weight:700;">FOCUS&nbsp;&nbsp;→</div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+          <div class="module-gap">&nbsp;</div>
+
+          <!-- ============ 11: BULK BUY ============ -->
+          <table role="presentation" class="label-wrap" width="600" cellpadding="0" cellspacing="0" border="0">
+            <tr><td class="module-label">11 / Bulk-buy saving</td></tr>
+            <tr><td class="module-note">Good for a replenishable SKU. The hierarchy should communicate one product, then the relevant quantity break.</td></tr>
+          </table>
+          <table role="presentation" class="canvas" width="600" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td style="padding:33px 36px 7px;" class="mobile-pad">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td width="48%" class="stack placeholder" style="height:225px;border-radius:8px;background:#d3d3d3;">EXAMPLE PRODUCT<br>IMAGE / 1:1</td>
+                    <td width="52%" class="stack stack-pad-top" style="padding:5px 0 5px 25px;" valign="middle">
+                      <div class="eyebrow">Stock up &amp; save</div>
+                      <div class="h3" style="margin-top:8px;">The more you keep on hand, the more you save.</div>
+                      <p class="body-copy" style="font-size:13px;line-height:19px;margin-top:9px;">Applies when you purchase multiple units of the same product.</p>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:16px 36px 32px;" class="mobile-pad">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td width="49%" style="border:1px solid #d5d5d5;border-radius:6px;padding:14px 13px;" align="center">
+                      <div style="font-family:Arial,Helvetica,sans-serif;color:#222222;font-size:13px;line-height:17px;font-weight:700;">BUY 2</div>
+                      <div style="font-family:Arial,Helvetica,sans-serif;color:#666666;font-size:12px;line-height:17px;margin-top:3px;">SAVE 5%</div>
+                    </td>
+                    <td width="2%">&nbsp;</td>
+                    <td width="49%" style="background:#eeeeee;border:1px solid #c5c5c5;border-radius:6px;padding:14px 13px;" align="center">
+                      <div style="font-family:Arial,Helvetica,sans-serif;color:#222222;font-size:13px;line-height:17px;font-weight:700;">BUY 3+</div>
+                      <div style="font-family:Arial,Helvetica,sans-serif;color:#666666;font-size:12px;line-height:17px;margin-top:3px;">SAVE 10%</div>
+                    </td>
+                  </tr>
+                </table>
+                <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:23px auto 0;">
+                  <tr><td class="btn-cell"><a href="#" class="button-dark">STOCK UP&nbsp;&nbsp;→</a></td></tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+          <div class="module-gap">&nbsp;</div>
+
+          <!-- ============ 12: OFFER EXPLAINER ============ -->
+          <table role="presentation" class="label-wrap" width="600" cellpadding="0" cellspacing="0" border="0">
+            <tr><td class="module-label">12 / Offer explainer / promo mechanics</td></tr>
+            <tr><td class="module-note">Not glamorous, but important when a promo has several conditions. This reduces support questions and checkout friction.</td></tr>
+          </table>
+          <table role="presentation" class="canvas" width="600" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td style="border:1px solid #d5d5d5;border-radius:8px;padding:31px 38px 29px;" class="mobile-pad">
+                <div class="eyebrow">How the offer works</div>
+                <div class="h3" style="margin-top:8px;">Three easy ways to save this week.</div>
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:20px;">
+                  <tr>
+                    <td width="32" valign="top"><div style="width:24px;height:24px;border-radius:50%;background:#202020;color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-size:11px;line-height:24px;font-weight:700;text-align:center;">1</div></td>
+                    <td valign="top"><p class="body-copy" style="font-size:14px;line-height:20px;"><strong style="color:#222222;">Shop the sale:</strong> Selected products are already reduced — no code needed.</p></td>
+                  </tr>
+                  <tr><td colspan="2" height="13" style="font-size:0;line-height:0;">&nbsp;</td></tr>
+                  <tr>
+                    <td width="32" valign="top"><div style="width:24px;height:24px;border-radius:50%;background:#202020;color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-size:11px;line-height:24px;font-weight:700;text-align:center;">2</div></td>
+                    <td valign="top"><p class="body-copy" style="font-size:14px;line-height:20px;"><strong style="color:#222222;">Add your extras:</strong> Buy more of the same product to unlock bulk saving.</p></td>
+                  </tr>
+                  <tr><td colspan="2" height="13" style="font-size:0;line-height:0;">&nbsp;</td></tr>
+                  <tr>
+                    <td width="32" valign="top"><div style="width:24px;height:24px;border-radius:50%;background:#202020;color:#ffffff;font-size:11px;line-height:24px;font-weight:700;text-align:center;">3</div></td>
+                    <td valign="top"><p class="body-copy" style="font-size:14px;line-height:20px;"><strong style="color:#222222;">Reach the threshold:</strong> Spend $150 and your complimentary gift is added automatically.</p></td>
+                  </tr>
+                </table>
+                <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top:24px;">
+                  <tr><td class="btn-cell"><a href="#" class="button-dark">SHOP THE OFFER&nbsp;&nbsp;→</a></td></tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+          <div class="module-gap">&nbsp;</div>
+
+          <!-- ============ 13: MINI URGENCY STRIP ============ -->
+          <table role="presentation" class="label-wrap" width="600" cellpadding="0" cellspacing="0" border="0">
+            <tr><td class="module-label">13 / Compact urgency strip</td></tr>
+            <tr><td class="module-note">A low-height insert for below a hero, between sections, or above a footer. Useful when a full promo block would be overkill.</td></tr>
+          </table>
+          <table role="presentation" class="canvas" width="600" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td style="background:#252525;padding:17px 25px;" class="mobile-pad">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td class="stack" valign="middle">
+                      <span style="font-family:Arial,Helvetica,sans-serif;color:#ffffff;font-size:13px;line-height:18px;font-weight:700;">EOFY SALE ENDS TONIGHT</span>
+                      <span style="font-family:Arial,Helvetica,sans-serif;color:#bdbdbd;font-size:13px;line-height:18px;">&nbsp;— prices return to normal at 11:59pm.</span>
+                    </td>
+                    <td width="120" class="stack stack-pad-top" valign="middle" align="right">
+                      <a href="#" style="font-family:Arial,Helvetica,sans-serif;color:#ffffff;font-size:12px;line-height:16px;font-weight:700;text-decoration:underline;">SHOP NOW&nbsp;→</a>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+          <div class="module-gap">&nbsp;</div>
+
+          <!-- End note: not an email module -->
+          <table role="presentation" class="label-wrap" width="600" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td style="padding:6px 4px 0;">
+                <p class="module-note">Build the final versions natively in Klaviyo where possible. Use custom HTML only for layouts the editor genuinely cannot reproduce, and make all countdowns/testing logic live outside this static reference.</p>
+              </td>
+            </tr>
+          </table>
+
+        </td>
+      </tr>
+    </table>
+  </center>
+</body>
+</html>
