@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="x-apple-disable-message-reformatting">
+  <title>MyBrainCo — Benefits Block Layout Library</title>
+  <style>
+    /*
+      MYBRAINCO BENEFIT BLOCKS — GREYSCALE WIREFRAME LIBRARY
+      Canvas: 600px wide. Replace all copy, type, imagery and colours.
+      Built as email-friendly HTML using tables with a responsive mobile fallback.
+    */
+    html, body { margin:0 !important; padding:0 !important; width:100% !important; min-width:100% !important; }
+    body { background:#d8d8d8; font-family:Arial, Helvetica, sans-serif; color:#171717; }
+    table { border-spacing:0; border-collapse:collapse; }
+    td { padding:0; }
+    img { border:0; outline:none; text-decoration:none; display:block; max-width:100%; height:auto; }
+    a { color:inherit; text-decoration:none; }
+
+    .email-shell { width:600px; max-width:600px; margin:0 auto; background:#ffffff; }
+    .module-label { padding:17px 28px 15px; background:#151515; color:#fff; font-family:Arial, Helvetica, sans-serif; font-size:10px; line-height:1; letter-spacing:1.8px; text-transform:uppercase; }
+    .module-number { color:#a8a8a8; padding-right:10px; }
+    .kicker { margin:0 0 10px; color:#606060; font-size:10px; line-height:13px; letter-spacing:1.5px; font-weight:bold; text-transform:uppercase; }
+    h1, h2, h3, p { margin:0; }
+    h2 { font-size:31px; line-height:35px; letter-spacing:-1.25px; font-weight:700; }
+    h3 { font-size:15px; line-height:20px; letter-spacing:-0.25px; font-weight:700; }
+    .body-copy { margin-top:13px; color:#525252; font-size:14px; line-height:21px; }
+    .small-copy { color:#656565; font-size:12px; line-height:17px; }
+    .button { display:inline-block; padding:13px 18px; background:#181818; color:#fff !important; font-size:11px; line-height:11px; letter-spacing:1px; text-transform:uppercase; font-weight:bold; }
+    .button-light { display:inline-block; padding:12px 17px; border:1px solid #c1c1c1; color:#202020 !important; font-size:10px; line-height:10px; letter-spacing:1px; text-transform:uppercase; font-weight:bold; }
+    .rule { height:1px; background:#d7d7d7; line-height:1px; font-size:1px; }
+    .pad-48 { padding:48px; }
+    .pad-40 { padding:40px; }
+    .pad-x-28 { padding-left:28px; padding-right:28px; }
+    .align-center { text-align:center; }
+    .valign-top { vertical-align:top; }
+    .valign-middle { vertical-align:middle; }
+    .grey-0 { background:#fff; }
+    .grey-1 { background:#f6f6f6; }
+    .grey-2 { background:#ebebeb; }
+    .grey-3 { background:#dedede; }
+    .ink { background:#1c1c1c; color:#fff; }
+    .white-copy { color:#f1f1f1; }
+    .white-muted { color:#bcbcbc; }
+
+    .placeholder { width:100%; background:#dedede; position:relative; overflow:hidden; }
+    .placeholder .placeholder-word { display:block; padding:12px; color:#767676; font-size:9px; font-weight:bold; letter-spacing:1.4px; text-align:center; text-transform:uppercase; }
+    .placeholder-photo { background:
+      linear-gradient(135deg, #bdbdbd 0%, #e7e7e7 50%, #c4c4c4 100%); }
+    .placeholder-product { background:#d6d6d6; }
+    .placeholder-product:before { content:""; display:block; width:34%; padding-top:49%; margin:0 auto; background:#9d9d9d; border-radius:44% 44% 8% 8%; box-shadow:0 -12px 0 -4px #858585; }
+    .placeholder-product .placeholder-word { margin-top:-8px; }
+    .image-hero { height:318px; }
+    .image-tall { height:346px; }
+    .image-square { height:246px; }
+    .image-landscape { height:190px; }
+
+    .icon-disc { width:34px; height:34px; margin:0 auto 15px; border-radius:50%; background:#242424; color:#fff; font-size:12px; line-height:34px; text-align:center; font-weight:bold; }
+    .icon-outline { width:37px; height:37px; border:1px solid #7d7d7d; border-radius:50%; color:#313131; font-size:12px; line-height:37px; text-align:center; font-weight:bold; }
+    .number-box { width:28px; height:28px; border:1px solid #adadad; color:#202020; font-size:10px; line-height:28px; text-align:center; font-weight:bold; }
+    .benefit-cell { width:33.333%; padding:0 12px; vertical-align:top; }
+    .benefit-cell:first-child { padding-left:0; }
+    .benefit-cell:last-child { padding-right:0; }
+
+    .benefit-row { padding:20px 0; border-top:1px solid #d0d0d0; }
+    .benefit-row:first-child { padding-top:0; border-top:0; }
+    .benefit-row:last-child { padding-bottom:0; }
+    .benefit-index { width:32px; padding-right:14px; vertical-align:top; }
+    .quote-mark { font-size:44px; line-height:28px; color:#a1a1a1; font-family:Georgia, serif; }
+    .stat-number { font-size:36px; line-height:37px; letter-spacing:-1.8px; font-weight:700; }
+    .stat-label { margin-top:6px; color:#656565; font-size:10px; line-height:13px; letter-spacing:1px; text-transform:uppercase; }
+
+    .step-line { width:31px; border-top:1px solid #8f8f8f; height:1px; font-size:1px; line-height:1px; }
+    .step-dot { width:11px; height:11px; background:#202020; border-radius:50%; }
+    .comparison-card { border:1px solid #cecece; }
+    .comparison-heading { padding:13px 15px; font-size:10px; line-height:12px; font-weight:bold; letter-spacing:1.3px; text-transform:uppercase; }
+    .comparison-body { min-height:83px; padding:17px 15px 18px; }
+    .check { display:inline-block; width:16px; font-weight:bold; }
+    .xmark { display:inline-block; width:16px; color:#777; }
+    .faq-row { padding:17px 0; border-bottom:1px solid #d2d2d2; }
+    .faq-row:first-child { padding-top:0; }
+    .faq-plus { width:18px; color:#5a5a5a; font-size:19px; line-height:19px; text-align:right; }
+    .routine-time { color:#737373; font-size:10px; line-height:13px; letter-spacing:1.2px; text-transform:uppercase; font-weight:bold; }
+    .routine-title { margin-top:5px; font-size:17px; line-height:20px; letter-spacing:-0.45px; font-weight:bold; }
+    .routine-line { margin-top:12px; width:100%; height:1px; background:#c9c9c9; }
+
+    @media screen and (max-width:620px) {
+      .email-shell { width:100% !important; max-width:100% !important; }
+      .mobile-pad { padding-left:22px !important; padding-right:22px !important; }
+      .pad-48 { padding:38px 22px !important; }
+      .pad-40 { padding:32px 22px !important; }
+      .module-label { padding-left:22px !important; padding-right:22px !important; }
+      h2 { font-size:28px !important; line-height:32px !important; }
+      .stack-column, .stack-column-cell { display:block !important; width:100% !important; max-width:100% !important; }
+      .stack-column-cell { box-sizing:border-box !important; }
+      .mobile-spacer { height:22px !important; line-height:22px !important; font-size:22px !important; }
+      .two-col-image { height:275px !important; }
+      .benefit-cell { padding:0 6px !important; }
+      .benefit-cell:first-child { padding-left:0 !important; }
+      .benefit-cell:last-child { padding-right:0 !important; }
+      .image-hero { height:280px !important; }
+      .image-tall { height:300px !important; }
+      .image-square { height:210px !important; }
+      .image-landscape { height:160px !important; }
+      .stat-number { font-size:30px !important; line-height:31px !important; }
+      .stack-pad { padding-left:0 !important; padding-right:0 !important; }
+      .stack-gap { padding-top:24px !important; }
+      .uc-cell { padding:0 0 14px 0 !important; }
+    }
+  </style>
+</head>
+<body>
+  <center role="article" aria-roledescription="email" lang="en" style="width:100%; background:#d8d8d8;">
+    <table role="presentation" width="100%" style="background:#d8d8d8;">
+      <tr>
+        <td align="center" style="padding:28px 10px 50px;">
+
+          <!-- LIBRARY INTRO / DELETE BEFORE USE -->
+          <table role="presentation" class="email-shell" width="600">
+            <tr>
+              <td class="ink pad-48 mobile-pad">
+                <p class="kicker white-muted">MyBrainCo • modular email library</p>
+                <h1 style="font-size:38px; line-height:41px; letter-spacing:-1.8px; margin:0;">Benefits blocks<br>in greyscale.</h1>
+                <p class="body-copy white-copy" style="max-width:430px;">Twelve layouts for explaining product value without turning every email into a wall of copy. Replace the placeholder imagery, type and content once the visual direction is set.</p>
+              </td>
+            </tr>
+          </table>
+          <table role="presentation" class="email-shell" width="600"><tr><td style="height:18px; line-height:18px; font-size:18px;">&nbsp;</td></tr></table>
+
+          <!-- 01: CORE BENEFIT TRIAD -->
+          <table role="presentation" class="email-shell" width="600">
+            <tr><td class="module-label"><span class="module-number">01</span> Core benefit triad</td></tr>
+            <tr>
+              <td class="grey-0 pad-48 mobile-pad align-center">
+                <p class="kicker">Your daily edge</p>
+                <h2>Three reasons it earns a place in your routine.</h2>
+                <p class="body-copy" style="max-width:430px; margin:14px auto 0;">Best for a product that has three clear, customer-friendly value points.</p>
+                <table role="presentation" width="100%" style="margin-top:34px;">
+                  <tr>
+                    <td class="benefit-cell align-center">
+                      <div class="icon-disc">01</div>
+                      <h3>Steady support</h3>
+                      <p class="small-copy" style="margin-top:7px;">One clean sentence about the first point.</p>
+                    </td>
+                    <td class="benefit-cell align-center">
+                      <div class="icon-disc">02</div>
+                      <h3>Built for real days</h3>
+                      <p class="small-copy" style="margin-top:7px;">One clean sentence about the second point.</p>
+                    </td>
+                    <td class="benefit-cell align-center">
+                      <div class="icon-disc">03</div>
+                      <h3>Easy to keep up</h3>
+                      <p class="small-copy" style="margin-top:7px;">One clean sentence about the third point.</p>
+                    </td>
+                  </tr>
+                </table>
+                <div style="margin-top:31px;"><a class="button" href="#">Explore the formula</a></div>
+              </td>
+            </tr>
+          </table>
+          <table role="presentation" class="email-shell" width="600"><tr><td style="height:18px; line-height:18px; font-size:18px;">&nbsp;</td></tr></table>
+
+          <!-- 02: PRODUCT + STACKED BENEFITS -->
+          <table role="presentation" class="email-shell" width="600">
+            <tr><td class="module-label"><span class="module-number">02</span> Product plus stacked benefit list</td></tr>
+            <tr>
+              <td class="grey-1">
+                <table role="presentation" width="100%">
+                  <tr>
+                    <td class="stack-column-cell" width="50%" style="vertical-align:middle;">
+                      <div class="placeholder placeholder-product two-col-image" style="height:366px;"><span class="placeholder-word">Product image</span></div>
+                    </td>
+                    <td class="stack-column-cell pad-40 mobile-pad" width="50%" style="vertical-align:middle;">
+                      <p class="kicker">A better baseline</p>
+                      <h2 style="font-size:28px; line-height:32px;">Support that fits into the everyday.</h2>
+                      <table role="presentation" width="100%" style="margin-top:24px;">
+                        <tr><td class="benefit-row">
+                          <table role="presentation" width="100%"><tr><td class="benefit-index"><div class="number-box">01</div></td><td><h3>Feature statement</h3><p class="small-copy" style="margin-top:4px;">Supporting detail that says why this matters.</p></td></tr></table>
+                        </td></tr>
+                        <tr><td class="benefit-row">
+                          <table role="presentation" width="100%"><tr><td class="benefit-index"><div class="number-box">02</div></td><td><h3>Feature statement</h3><p class="small-copy" style="margin-top:4px;">Supporting detail that says why this matters.</p></td></tr></table>
+                        </td></tr>
+                        <tr><td class="benefit-row">
+                          <table role="presentation" width="100%"><tr><td class="benefit-index"><div class="number-box">03</div></td><td><h3>Feature statement</h3><p class="small-copy" style="margin-top:4px;">Supporting detail that says why this matters.</p></td></tr></table>
+                        </td></tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+          <table role="presentation" class="email-shell" width="600"><tr><td style="height:18px; line-height:18px; font-size:18px;">&nbsp;</td></tr></table>
+
+          <!-- 03: IMAGE LED BENEFIT STORY -->
+          <table role="presentation" class="email-shell" width="600">
+            <tr><td class="module-label"><span class="module-number">03</span> Image-led benefit story</td></tr>
+            <tr><td><div class="placeholder placeholder-photo image-hero"><span class="placeholder-word" style="padding-top:146px;">Lifestyle / editorial image</span></div></td></tr>
+            <tr>
+              <td class="ink pad-48 mobile-pad">
+                <p class="kicker white-muted">Make the benefit felt</p>
+                <h2>Designed for the days when you want to show up properly.</h2>
+                <p class="body-copy white-copy" style="max-width:440px;">A more emotional, lifestyle-led way to introduce one flagship benefit. Keep it simple and let the image create the feeling.</p>
+                <table role="presentation" width="100%" style="margin-top:30px;">
+                  <tr>
+                    <td width="50%" class="stack-column-cell stack-pad" style="padding-right:12px; vertical-align:top;">
+                      <p class="small-copy white-muted" style="font-weight:bold; letter-spacing:1px; text-transform:uppercase;">The feeling</p>
+                      <p style="margin-top:7px; font-size:15px; line-height:21px;">More clarity, fewer compromises.</p>
+                    </td>
+                    <td width="50%" class="stack-column-cell stack-pad stack-gap" style="padding-left:12px; vertical-align:top;">
+                      <p class="small-copy white-muted" style="font-weight:bold; letter-spacing:1px; text-transform:uppercase;">The proof</p>
+                      <p style="margin-top:7px; font-size:15px; line-height:21px;">A concise product or formulation reason.</p>
+                    </td>
+                  </tr>
+                </table>
+                <div style="margin-top:30px;"><a class="button-light" style="border-color:#6d6d6d; color:#ffffff !important;" href="#">Discover more</a></div>
+              </td>
+            </tr>
+          </table>
+          <table role="presentation" class="email-shell" width="600"><tr><td style="height:18px; line-height:18px; font-size:18px;">&nbsp;</td></tr></table>
+
+          <!-- 04: HOW IT WORKS -->
+          <table role="presentation" class="email-shell" width="600">
+            <tr><td class="module-label"><span class="module-number">04</span> How it works — 3 steps</td></tr>
+            <tr>
+              <td class="grey-2 pad-48 mobile-pad">
+                <p class="kicker">The simple version</p>
+                <h2 style="max-width:425px;">A clear process, without the science lecture.</h2>
+                <table role="presentation" width="100%" style="margin-top:34px;">
+                  <tr>
+                    <td class="benefit-cell valign-top">
+                      <div class="icon-outline">1</div>
+                      <div class="step-line" style="margin:17px 0 15px;"></div>
+                      <h3>Start here</h3>
+                      <p class="small-copy" style="margin-top:7px;">A brief explanation of the starting point.</p>
+                    </td>
+                    <td class="benefit-cell valign-top">
+                      <div class="icon-outline">2</div>
+                      <div class="step-line" style="margin:17px 0 15px;"></div>
+                      <h3>Then this</h3>
+                      <p class="small-copy" style="margin-top:7px;">A brief explanation of what happens next.</p>
+                    </td>
+                    <td class="benefit-cell valign-top">
+                      <div class="icon-outline">3</div>
+                      <div class="step-line" style="margin:17px 0 15px;"></div>
+                      <h3>The outcome</h3>
+                      <p class="small-copy" style="margin-top:7px;">A brief statement about the resulting benefit.</p>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+          <table role="presentation" class="email-shell" width="600"><tr><td style="height:18px; line-height:18px; font-size:18px;">&nbsp;</td></tr></table>
+
+          <!-- 05: INGREDIENT SPOTLIGHT -->
+          <table role="presentation" class="email-shell" width="600">
+            <tr><td class="module-label"><span class="module-number">05</span> Ingredient spotlight</td></tr>
+            <tr>
+              <td class="grey-0">
+                <table role="presentation" width="100%">
+                  <tr>
+                    <td class="stack-column-cell" width="50%" style="vertical-align:middle;">
+                      <div class="placeholder placeholder-photo two-col-image" style="height:345px;"><span class="placeholder-word" style="padding-top:143px;">Ingredient / macro image</span></div>
+                    </td>
+                    <td class="stack-column-cell pad-40 mobile-pad" width="50%" style="vertical-align:middle;">
+                      <p class="kicker">Inside the formula</p>
+                      <h2 style="font-size:28px; line-height:32px;">One ingredient. A good reason it is here.</h2>
+                      <p class="body-copy">Use this to educate without listing every ingredient at once.</p>
+                      <div class="rule" style="margin:22px 0;"></div>
+                      <p class="small-copy" style="font-weight:bold; letter-spacing:1.2px; text-transform:uppercase;">Included at</p>
+                      <p style="margin-top:4px; font-size:22px; line-height:25px; font-weight:bold; letter-spacing:-.7px;">XXX mg per serve</p>
+                      <div style="margin-top:24px;"><a class="button" href="#">Meet the formula</a></div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+          <table role="presentation" class="email-shell" width="600"><tr><td style="height:18px; line-height:18px; font-size:18px;">&nbsp;</td></tr></table>
+
+          <!-- 06: FORMULA PROOF / QUALITY -->
+          <table role="presentation" class="email-shell" width="600">
+            <tr><td class="module-label"><span class="module-number">06</span> Formula proof / quality standards</td></tr>
+            <tr>
+              <td class="grey-1 pad-48 mobile-pad align-center">
+                <p class="kicker">The receipts matter</p>
+                <h2>What sits behind the label.</h2>
+                <p class="body-copy" style="max-width:420px; margin:14px auto 0;">A credibility block for sourcing, testing, dosage, or formulation standards.</p>
+                <table role="presentation" width="100%" style="margin-top:32px; border-top:1px solid #d3d3d3; border-bottom:1px solid #d3d3d3;">
+                  <tr>
+                    <td class="benefit-cell" style="padding-top:24px; padding-bottom:24px; border-right:1px solid #d3d3d3;">
+                      <div class="stat-number">XX</div>
+                      <div class="stat-label">Key measure</div>
+                    </td>
+                    <td class="benefit-cell" style="padding-top:24px; padding-bottom:24px; border-right:1px solid #d3d3d3;">
+                      <div class="stat-number">XX%</div>
+                      <div class="stat-label">Quality proof</div>
+                    </td>
+                    <td class="benefit-cell" style="padding-top:24px; padding-bottom:24px;">
+                      <div class="stat-number">XX</div>
+                      <div class="stat-label">Another proof</div>
+                    </td>
+                  </tr>
+                </table>
+                <p class="small-copy" style="margin-top:18px;">Keep claims substantiated and TGA-safe. This layout is about confidence, not hype.</p>
+              </td>
+            </tr>
+          </table>
+          <table role="presentation" class="email-shell" width="600"><tr><td style="height:18px; line-height:18px; font-size:18px;">&nbsp;</td></tr></table>
+
+          <!-- 07: ROUTINE / WHEN TO TAKE -->
+          <table role="presentation" class="email-shell" width="600">
+            <tr><td class="module-label"><span class="module-number">07</span> Routine / how to use it</td></tr>
+            <tr>
+              <td class="grey-3 pad-48 mobile-pad">
+                <table role="presentation" width="100%">
+                  <tr>
+                    <td class="stack-column-cell stack-pad" width="45%" style="vertical-align:top; padding-right:26px;">
+                      <p class="kicker">Make it a habit</p>
+                      <h2 style="font-size:28px; line-height:32px;">A simple rhythm to follow.</h2>
+                      <p class="body-copy">Good for products where consistency matters or dosing needs explaining.</p>
+                    </td>
+                    <td class="stack-column-cell stack-gap" width="55%" style="vertical-align:top;">
+                      <table role="presentation" width="100%">
+                        <tr><td style="padding-bottom:19px;">
+                          <p class="routine-time">Morning · 7:00am</p>
+                          <p class="routine-title">Add one serve to your first drink of the day.</p>
+                          <div class="routine-line"></div>
+                        </td></tr>
+                        <tr><td style="padding:19px 0;">
+                          <p class="routine-time">After movement · 12:00pm</p>
+                          <p class="routine-title">Take with water, food or your daily shake.</p>
+                          <div class="routine-line"></div>
+                        </td></tr>
+                        <tr><td style="padding-top:19px;">
+                          <p class="routine-time">Keep it going</p>
+                          <p class="routine-title">The consistency note or expected usage guidance.</p>
+                        </td></tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+          <table role="presentation" class="email-shell" width="600"><tr><td style="height:18px; line-height:18px; font-size:18px;">&nbsp;</td></tr></table>
+
+          <!-- 08: MADE FOR / USE CASES -->
+          <table role="presentation" class="email-shell" width="600">
+            <tr><td class="module-label"><span class="module-number">08</span> Made for / use case grid</td></tr>
+            <tr>
+              <td class="grey-0 pad-48 mobile-pad">
+                <p class="kicker">Built around real routines</p>
+                <h2>Made for the moments that need more from you.</h2>
+                <table role="presentation" width="100%" style="margin-top:29px;">
+                  <tr>
+                    <td class="stack-column-cell uc-cell" width="50%" style="padding:0 8px 16px 0; vertical-align:top;">
+                      <div class="grey-2" style="padding:24px 23px;">
+                        <p class="small-copy" style="font-weight:bold; letter-spacing:1.2px; text-transform:uppercase;">Use case 01</p>
+                        <h3 style="margin-top:8px; font-size:17px; line-height:21px;">When the day starts early.</h3>
+                        <p class="small-copy" style="margin-top:8px;">A short qualifying detail.</p>
+                      </div>
+                    </td>
+                    <td class="stack-column-cell uc-cell" width="50%" style="padding:0 0 16px 8px; vertical-align:top;">
+                      <div class="grey-2" style="padding:24px 23px;">
+                        <p class="small-copy" style="font-weight:bold; letter-spacing:1.2px; text-transform:uppercase;">Use case 02</p>
+                        <h3 style="margin-top:8px; font-size:17px; line-height:21px;">When you need to stay switched on.</h3>
+                        <p class="small-copy" style="margin-top:8px;">A short qualifying detail.</p>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="stack-column-cell uc-cell" width="50%" style="padding:0 8px 0 0; vertical-align:top;">
+                      <div class="grey-2" style="padding:24px 23px;">
+                        <p class="small-copy" style="font-weight:bold; letter-spacing:1.2px; text-transform:uppercase;">Use case 03</p>
+                        <h3 style="margin-top:8px; font-size:17px; line-height:21px;">When you are building a better rhythm.</h3>
+                        <p class="small-copy" style="margin-top:8px;">A short qualifying detail.</p>
+                      </div>
+                    </td>
+                    <td class="stack-column-cell uc-cell" width="50%" style="padding:0 0 0 8px; vertical-align:top;">
+                      <div class="grey-2" style="padding:24px 23px;">
+                        <p class="small-copy" style="font-weight:bold; letter-spacing:1.2px; text-transform:uppercase;">Use case 04</p>
+                        <h3 style="margin-top:8px; font-size:17px; line-height:21px;">When you want less friction.</h3>
+                        <p class="small-copy" style="margin-top:8px;">A short qualifying detail.</p>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+          <table role="presentation" class="email-shell" width="600"><tr><td style="height:18px; line-height:18px; font-size:18px;">&nbsp;</td></tr></table>
+
+          <!-- 09: WHY THIS FORMULA / COMPARISON -->
+          <table role="presentation" class="email-shell" width="600">
+            <tr><td class="module-label"><span class="module-number">09</span> Why this formula / comparison</td></tr>
+            <tr>
+              <td class="grey-1 pad-48 mobile-pad">
+                <p class="kicker">The difference is in the details</p>
+                <h2 style="max-width:470px;">A clean comparison, without making it feel combative.</h2>
+                <table role="presentation" width="100%" style="margin-top:30px;">
+                  <tr>
+                    <td class="stack-column-cell stack-pad" width="50%" style="padding-right:7px; vertical-align:top;">
+                      <div class="comparison-card" style="background:#fff;">
+                        <div class="comparison-heading" style="background:#e8e8e8;">Typical option</div>
+                        <div class="comparison-body">
+                          <p class="small-copy"><span class="xmark">—</span> Generic feature or limitation</p>
+                          <p class="small-copy" style="margin-top:10px;"><span class="xmark">—</span> Generic feature or limitation</p>
+                          <p class="small-copy" style="margin-top:10px;"><span class="xmark">—</span> Generic feature or limitation</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="stack-column-cell stack-pad stack-gap" width="50%" style="padding-left:7px; vertical-align:top;">
+                      <div class="comparison-card" style="background:#212121; border-color:#212121; color:#fff;">
+                        <div class="comparison-heading" style="background:#323232;">This formula</div>
+                        <div class="comparison-body">
+                          <p class="small-copy" style="color:#e6e6e6;"><span class="check">✓</span> Your meaningful difference</p>
+                          <p class="small-copy" style="margin-top:10px; color:#e6e6e6;"><span class="check">✓</span> Your meaningful difference</p>
+                          <p class="small-copy" style="margin-top:10px; color:#e6e6e6;"><span class="check">✓</span> Your meaningful difference</p>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+                <p class="small-copy" style="margin-top:17px;">Use only genuine, supportable differences. “Better” needs a real reason beneath it.</p>
+              </td>
+            </tr>
+          </table>
+          <table role="presentation" class="email-shell" width="600"><tr><td style="height:18px; line-height:18px; font-size:18px;">&nbsp;</td></tr></table>
+
+          <!-- 10: MYTH VS FACT -->
+          <table role="presentation" class="email-shell" width="600">
+            <tr><td class="module-label"><span class="module-number">10</span> Myth versus fact</td></tr>
+            <tr>
+              <td class="ink pad-48 mobile-pad">
+                <p class="kicker white-muted">Clear it up</p>
+                <h2>Take the friction out of the decision.</h2>
+                <table role="presentation" width="100%" style="margin-top:28px;">
+                  <tr>
+                    <td style="padding:0 0 12px;">
+                      <div style="padding:18px 18px 19px; background:#303030; border-left:3px solid #a6a6a6;">
+                        <p class="small-copy white-muted" style="font-weight:bold; letter-spacing:1.15px; text-transform:uppercase;">Common thought</p>
+                        <p style="margin-top:7px; font-size:17px; line-height:22px; letter-spacing:-.35px;">“A concise misconception or hesitation.”</p>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div style="padding:18px 18px 19px; background:#f0f0f0; border-left:3px solid #ffffff; color:#202020;">
+                        <p class="small-copy" style="font-weight:bold; letter-spacing:1.15px; text-transform:uppercase;">What is true</p>
+                        <p style="margin-top:7px; font-size:17px; line-height:22px; letter-spacing:-.35px;">A factual, measured answer that makes the choice clearer.</p>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+          <table role="presentation" class="email-shell" width="600"><tr><td style="height:18px; line-height:18px; font-size:18px;">&nbsp;</td></tr></table>
+
+          <!-- 11: SCIENCE, SIMPLY -->
+          <table role="presentation" class="email-shell" width="600">
+            <tr><td class="module-label"><span class="module-number">11</span> The science, simply</td></tr>
+            <tr>
+              <td class="grey-0 pad-48 mobile-pad">
+                <table role="presentation" width="100%">
+                  <tr>
+                    <td class="stack-column-cell stack-pad" width="50%" style="padding-right:22px; vertical-align:top;">
+                      <p class="kicker">No jargon required</p>
+                      <h2 style="font-size:28px; line-height:32px;">A little science goes a long way.</h2>
+                      <p class="body-copy">Use this when a customer needs enough of the “why” to understand the product, not a research paper.</p>
+                    </td>
+                    <td class="stack-column-cell grey-2 stack-gap" width="50%" style="padding:23px; vertical-align:top;">
+                      <p class="small-copy" style="font-weight:bold; letter-spacing:1.15px; text-transform:uppercase;">In plain English</p>
+                      <p style="margin-top:9px; font-family:Georgia, serif; font-size:20px; line-height:27px; letter-spacing:-.5px;">“One human sentence that connects the ingredient to the everyday benefit.”</p>
+                      <div class="rule" style="margin:18px 0 15px;"></div>
+                      <p class="small-copy">Optionally add a discreet source or footnote reference here.</p>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+          <table role="presentation" class="email-shell" width="600"><tr><td style="height:18px; line-height:18px; font-size:18px;">&nbsp;</td></tr></table>
+
+          <!-- 12: FAQ -->
+          <table role="presentation" class="email-shell" width="600">
+            <tr><td class="module-label"><span class="module-number">12</span> Benefit FAQ</td></tr>
+            <tr>
+              <td class="grey-2 pad-48 mobile-pad">
+                <p class="kicker">The final nudge</p>
+                <h2>Questions people usually ask before trying it.</h2>
+                <table role="presentation" width="100%" style="margin-top:29px;">
+                  <tr><td class="faq-row">
+                    <table role="presentation" width="100%"><tr><td><h3>What is the main reason to take it?</h3></td><td class="faq-plus">+</td></tr></table>
+                  </td></tr>
+                  <tr><td class="faq-row">
+                    <table role="presentation" width="100%"><tr><td><h3>When is the best time to use it?</h3></td><td class="faq-plus">+</td></tr></table>
+                  </td></tr>
+                  <tr><td class="faq-row">
+                    <table role="presentation" width="100%"><tr><td><h3>How long should I use it for?</h3></td><td class="faq-plus">+</td></tr></table>
+                  </td></tr>
+                  <tr><td class="faq-row">
+                    <table role="presentation" width="100%"><tr><td><h3>What makes the formula different?</h3></td><td class="faq-plus">+</td></tr></table>
+                  </td></tr>
+                </table>
+                <div style="margin-top:27px;"><a class="button" href="#">Shop the product</a></div>
+              </td>
+            </tr>
+          </table>
+
+          <!-- END NOTE / DELETE BEFORE USE -->
+          <table role="presentation" class="email-shell" width="600">
+            <tr>
+              <td class="ink pad-40 mobile-pad">
+                <p class="kicker white-muted">Library note</p>
+                <p style="font-size:16px; line-height:22px; max-width:470px;">Use one or two benefit modules in an email, not six. The strongest emails keep one idea as the hero and use the rest as proof.</p>
+              </td>
+            </tr>
+          </table>
+
+        </td>
+      </tr>
+    </table>
+  </center>
+</body>
+</html>
